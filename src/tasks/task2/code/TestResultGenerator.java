@@ -7,21 +7,19 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class TestResultGenerator {
-    public Set<String> getDetailsOfFailedStudents(HashSet<Student> studentSet) {
-        return studentSet.stream().filter(Student -> Student.getMarks() < 30.0)
-                .map(this::getDetails)
-                .collect(Collectors.toSet());
+
+    private String studentDetails(Student student) {
+        return student.getName().concat("-").concat(String.valueOf(student.getGuardianContactNumber()));
     }
 
-    private String getDetails(Student student) {
-        return student.getName() + "-" + student.getGuardianContactNumber();
+    public HashSet<String> getDetailsOfFailedStudents(Set<Student> studentSet) {
+        return studentSet.stream().filter(student -> student.getMarks() < 33.0)
+                .map(this::studentDetails).collect(Collectors.toCollection(HashSet<String>::new));
     }
-
 
     public Set<Student> sortStudentsForRanking(HashSet<Student> studentSet) {
-        return studentSet.stream().sorted()
-                .sorted(Comparator.comparingInt(Student::getRollNumber))
-                .collect(Collectors.toCollection(LinkedHashSet::new));
-    }
+        Comparator<Student> markSorting = Comparator.comparingDouble(Student::getMarks);
 
+        return studentSet.stream().sorted(markSorting).collect(Collectors.toCollection(LinkedHashSet::new));
+    }
 }
