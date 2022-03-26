@@ -18,7 +18,7 @@ public class VideoAnalytics {
     }
 
     //This method inputs a set of YouTubeVideo type and returns a list of String type.
-    // A short video is one whose duration is less than or equal to 10 minutes.
+    //A short video is one whose duration is less than or equal to 10 minutes.
     //Find all such videos and store the name, number of likes and duration of the video
     //into a String, and store all such strings into a list and return it from the method.
     private String detailsOfVideo(YouTubeVideo youTubeVideo) {
