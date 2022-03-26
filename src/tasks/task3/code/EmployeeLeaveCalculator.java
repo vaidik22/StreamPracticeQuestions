@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class EmployeeLeaveCalculator {
     public List<Short> getDefaulterEmployeeIDList(List<Employee> employeeList) {
-        return employeeList.stream().filter(Employee -> Employee.getLeaveTaken() < 25)
+        return employeeList.stream().filter(Employee -> Employee.getLeaveTaken() > 25)
                 .distinct()
                 .map(Employee::getEmployeeId)
                 .toList();
