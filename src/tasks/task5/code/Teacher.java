@@ -12,7 +12,7 @@ public class Teacher {
     public Teacher() {
         this.teacherName = "Divyansh Bharadwaj";
         this.teacherID = String.valueOf(132465);
-        this.teacherSalary = Double.valueOf(100_000);
+        this.teacherSalary = 100000.0;
         for (List<String> subject : List.of(subjects)) {
             subject.add("Java");
         }
