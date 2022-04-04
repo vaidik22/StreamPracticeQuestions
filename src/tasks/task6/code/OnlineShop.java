@@ -5,7 +5,10 @@ import java.util.Set;
 
 public class OnlineShop {
     public List<SmartPhone> getListOfSmartPhones(Set<SmartPhone> smartPhones, byte requiredScreenSize) {
-        return List.of();
+
+        smartPhones.stream().filter(smartPhone -> smartPhone.getScreenSizeOfTheSmartphoneInInches() >= requiredScreenSize);
+        smartPhones.stream().filter(smartPhone -> smartPhone.getScreenSizeOfTheSmartphoneInInches() < requiredScreenSize);
+        return smartPhones.stream().toList();
     }
 
     public List<SmartPhone> findBudgetSmartPhones(Set<SmartPhone> smartPhones) {
